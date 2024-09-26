@@ -7,3 +7,6 @@ sst-env.d.ts
 
 # ts config file
 tsconfig.json
+
+# pnpm-lock file
+pnpm-lock.yaml
