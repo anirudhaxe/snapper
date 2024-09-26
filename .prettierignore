@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+coverage
+
+# sst
+sst-env.d.ts
+
+# ts config file
+tsconfig.json
