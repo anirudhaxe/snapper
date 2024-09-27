@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
+      sst:
+        specifier: ^3.1.43
+        version: 3.1.43
     devDependencies:
       '@eslint/js':
         specifier: ^9.11.1
@@ -18,6 +18,9 @@ importers:
       '@types/aws-lambda':
         specifier: ^8.10.145
         version: 8.10.145
+      '@types/node':
+        specifier: ^22.7.3
+        version: 22.7.3
       eslint:
         specifier: ^9.11.1
         version: 9.11.1
@@ -30,6 +33,9 @@ importers:
       prettier:
         specifier: 3.3.3
         version: 3.3.3
+      typescript:
+        specifier: ^5.6.2
+        version: 5.6.2
       typescript-eslint:
         specifier: ^8.7.0
         version: 8.7.0(eslint@9.11.1)(typescript@5.6.2)
@@ -98,6 +104,9 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/node@22.7.3':
+    resolution: {integrity: sha512-qXKfhXXqGTyBskvWEzJZPUxSslAiLaB6JGP1ic/XTH9ctGgzdgYguuLP1C601aRTSDNlLb0jbKqXjZ48GNraSA==}
 
   '@typescript-eslint/eslint-plugin@8.7.0':
     resolution: {integrity: sha512-RIHOoznhA3CCfSTFiB6kBGLQtB/sox+pJ6jeFu6FxJvqL8qRxq/FfGO/UhsGgQM9oGdXkV4xUgli+dt26biB6A==}
@@ -179,6 +188,9 @@ packages:
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+
+  aws4fetch@1.0.20:
+    resolution: {integrity: sha512-/djoAN709iY65ETD6LKCtyyEI04XIBP5xVvfmNxsEP0uJB5tyaGBztSryRr4HqMStr9R06PisQE7m9zDTXKu6g==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -368,6 +380,12 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
+  jose@4.15.9:
+    resolution: {integrity: sha512-1vUQX+IdDMVPj4k8kOxgUqlcK518yluMuGZwqlr44FS1ppZB/5GWh4rZG89erpOBOJjU/OBsnCVFfapsRz6nEA==}
+
+  jose@5.2.3:
+    resolution: {integrity: sha512-KUXdbctm1uHVL8BYhnyHkgp3zDX5KW8ZhAKVFEfUbU2P8Alpzjb+48hHvjOdQIyPshoblhzsuqOwEEAbtHVirA==}
+
   js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
     hasBin: true
@@ -395,6 +413,10 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
+  lru-cache@6.0.0:
+    resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
+    engines: {node: '>=10'}
+
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
@@ -415,6 +437,17 @@ packages:
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+
+  object-hash@2.2.0:
+    resolution: {integrity: sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==}
+    engines: {node: '>= 6'}
+
+  oidc-token-hash@5.0.3:
+    resolution: {integrity: sha512-IF4PcGgzAr6XXSff26Sk/+P4KZFJVuHAJZj3wgO3vX2bMdNVp/QXTP3P7CEm9V1IdG8lDLY3HhiqpsE/nOwpPw==}
+    engines: {node: ^10.13.0 || >=12.0.0}
+
+  openid-client@5.6.4:
+    resolution: {integrity: sha512-T1h3B10BRPKfcObdBklX639tVz+xh34O7GjofqrqiAQdm7eHsQ00ih18x6wuJ/E6FxdtS2u3FmUGPDeEcMwzNA==}
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -484,6 +517,43 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
+  sst-darwin-arm64@3.1.43:
+    resolution: {integrity: sha512-Rv3sUtzkuroh9pEMI0DPoOP6zDWBhd0XvQNb6Frh7RQplqoRVVLGpSDmhUnbUB5GI2ZfjUQ6Hhs1PYS4tbqVAA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  sst-darwin-x64@3.1.43:
+    resolution: {integrity: sha512-mZq3iAz5vH51fxMD7ySAqxb3y4amvyVq5rYaBtaWNDY59AGC+kWGD4tWYVIjyJvpNfi4q/8YEY6wj70YsmWLiQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  sst-linux-arm64@3.1.43:
+    resolution: {integrity: sha512-tBWgyr+uCp6756HMms4roTF5FFhdOl0IPgdqybWOFnbt20LY4vk5WSiCQXbBml1EvkVv0GTVZPBdQjaqwW2VBA==}
+    cpu: [arm64]
+    os: [linux]
+
+  sst-linux-x64@3.1.43:
+    resolution: {integrity: sha512-Z4EJrSOUF/aVQZNhTWw1Owy7K8taNmX9N8NJE/WuaaJmuum0h4u/DjFLxJXCpYU/upCD+wsY5tUm+Y5NoH2snA==}
+    cpu: [x64]
+    os: [linux]
+
+  sst-linux-x86@3.1.43:
+    resolution: {integrity: sha512-SwUYKaATaFQtdGLMj7OOJnI9jclwnuAHRs1Yj1sH/xAWxwFAfW2ZpZH1yJKEivSlsU8AvoFmlowWKF2rAWDFzA==}
+    cpu: [x86]
+    os: [linux]
+
+  sst@3.1.43:
+    resolution: {integrity: sha512-bg0FIG8Fpd7ynFdX4Jd5CVkg769rDTmFZl4jYUkLrgeLEvQOT8VQ711GWmhf+P8y8RDvH5VJmH7U1EUA+rnRkg==}
+    hasBin: true
+    peerDependencies:
+      hono: 4.x
+      valibot: 0.30.x
+    peerDependenciesMeta:
+      hono:
+        optional: true
+      valibot:
+        optional: true
+
   strip-ansi@6.0.1:
     resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
     engines: {node: '>=8'}
@@ -527,6 +597,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
+
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
@@ -538,6 +611,9 @@ packages:
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
+
+  yallist@4.0.0:
+    resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
@@ -605,6 +681,10 @@ snapshots:
   '@types/estree@1.0.6': {}
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/node@22.7.3':
+    dependencies:
+      undici-types: 6.19.8
 
   '@typescript-eslint/eslint-plugin@8.7.0(@typescript-eslint/parser@8.7.0(eslint@9.11.1)(typescript@5.6.2))(eslint@9.11.1)(typescript@5.6.2)':
     dependencies:
@@ -707,6 +787,8 @@ snapshots:
       color-convert: 2.0.1
 
   argparse@2.0.1: {}
+
+  aws4fetch@1.0.20: {}
 
   balanced-match@1.0.2: {}
 
@@ -900,6 +982,10 @@ snapshots:
 
   isexe@2.0.0: {}
 
+  jose@4.15.9: {}
+
+  jose@5.2.3: {}
+
   js-yaml@4.1.0:
     dependencies:
       argparse: 2.0.1
@@ -925,6 +1011,10 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
+  lru-cache@6.0.0:
+    dependencies:
+      yallist: 4.0.0
+
   merge2@1.4.1: {}
 
   micromatch@4.0.8:
@@ -943,6 +1033,17 @@ snapshots:
   ms@2.1.3: {}
 
   natural-compare@1.4.0: {}
+
+  object-hash@2.2.0: {}
+
+  oidc-token-hash@5.0.3: {}
+
+  openid-client@5.6.4:
+    dependencies:
+      jose: 4.15.9
+      lru-cache: 6.0.0
+      object-hash: 2.2.0
+      oidc-token-hash: 5.0.3
 
   optionator@0.9.4:
     dependencies:
@@ -995,6 +1096,33 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
+  sst-darwin-arm64@3.1.43:
+    optional: true
+
+  sst-darwin-x64@3.1.43:
+    optional: true
+
+  sst-linux-arm64@3.1.43:
+    optional: true
+
+  sst-linux-x64@3.1.43:
+    optional: true
+
+  sst-linux-x86@3.1.43:
+    optional: true
+
+  sst@3.1.43:
+    dependencies:
+      aws4fetch: 1.0.20
+      jose: 5.2.3
+      openid-client: 5.6.4
+    optionalDependencies:
+      sst-darwin-arm64: 3.1.43
+      sst-darwin-x64: 3.1.43
+      sst-linux-arm64: 3.1.43
+      sst-linux-x64: 3.1.43
+      sst-linux-x86: 3.1.43
+
   strip-ansi@6.0.1:
     dependencies:
       ansi-regex: 5.0.1
@@ -1032,6 +1160,8 @@ snapshots:
 
   typescript@5.6.2: {}
 
+  undici-types@6.19.8: {}
+
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
@@ -1041,5 +1171,7 @@ snapshots:
       isexe: 2.0.0
 
   word-wrap@1.2.5: {}
+
+  yallist@4.0.0: {}
 
   yocto-queue@0.1.0: {}
