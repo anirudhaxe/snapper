@@ -4,6 +4,9 @@
   "description": "Automated database backup service",
   "type": "module",
   "scripts": {
+    "dev": "pnpm sst dev",
+    "build": "tsc",
+    "start": "node dist/sst.config.js",
     "prettier": "npx prettier . --write",
     "check:esLint": "npx eslint .",
     "check:prettier": "npx prettier . --check"

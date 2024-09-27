@@ -1,5 +1,8 @@
 # node modules
 node_modules
 
+# typescript out dir
+dist
+
 # sst
 .sst
