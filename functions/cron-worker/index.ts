@@ -1,9 +1,23 @@
 import { Handler } from "aws-lambda";
 import { variableProvider } from "./variableProvider";
-export const handler: Handler = async (event, context) => {
-  console.log(event, context);
+import { Resource } from "sst";
+import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
 
+const client = new SQSClient();
+
+export const handler: Handler = async () => {
   const input = variableProvider();
 
-  console.log(input);
+  // send a message
+  await client.send(
+    new SendMessageCommand({
+      QueueUrl: Resource.createBackupQueue.url,
+      MessageBody: JSON.stringify(input),
+    }),
+  );
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ status: "sent" }, null, 2),
+  };
 };

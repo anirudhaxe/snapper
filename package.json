@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-sqs": "^3.658.1",
     "sst": "^3.1.43"
   },
   "devDependencies": {
