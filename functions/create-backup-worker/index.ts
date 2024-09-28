@@ -1,15 +1,14 @@
 import { Handler } from "aws-lambda";
-import { InputData } from "~/types/globals";
+import { connectionData } from "~/types/globals";
 
-export const handler: Handler = async (event) => {
-  // TODO: handle the event records array
-  const message = JSON.parse(event.Records[0].body) as InputData;
+export const handler: Handler = async (event, context) => {
+  const message = JSON.parse(event.Records[0].body) as connectionData;
 
   // TODO: handle this error
   if (!message) {
     return;
   }
-  console.log(message);
+  console.log("MESSAGE:", message, "REQUEST_ID: ", context.awsRequestId);
 
   return "ok";
 };

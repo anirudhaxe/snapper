@@ -1,5 +1,9 @@
 import { Resource } from "sst";
-import type { InputData, DbType } from "~/types/globals";
+import type {
+  connectionData,
+  backupStorageData,
+  DbType,
+} from "~/types/globals";
 
 export const variableProvider: variableProvider = () => {
   const connectionDataEnv = Resource.DATABASE_CONN_STRINGS.value;
@@ -32,4 +36,7 @@ export const variableProvider: variableProvider = () => {
   };
 };
 
-type variableProvider = () => InputData;
+type variableProvider = () => {
+  connectionData: connectionData[];
+  backupStorageData: backupStorageData[];
+};

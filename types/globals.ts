@@ -11,9 +11,4 @@ type backupStorageData = {
   retentionPeriod: number;
 };
 
-type InputData = {
-  connectionData: connectionData[];
-  backupStorageData: backupStorageData[];
-};
-
-export { InputData, DbType };
+export { connectionData, backupStorageData, DbType };
