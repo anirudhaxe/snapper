@@ -16,12 +16,19 @@ export default $config({
     const connStringsEnv = new sst.Secret("DATABASE_CONN_STRINGS");
     const backupStorageDataEnv = new sst.Secret("BACKUP_STORAGE_DATA");
 
+    const createBackupQueue = new sst.aws.Queue("createBackupQueue");
+
     new sst.aws.Cron("cron-worker", {
       schedule: "rate(1 minute)",
       job: {
         handler: "functions/cron-worker/index.handler",
-        link: [connStringsEnv, backupStorageDataEnv],
+        link: [connStringsEnv, backupStorageDataEnv, createBackupQueue],
       },
+    });
+
+    // createBackupQueue.subscribe("functions/create-backup-worker/index.handler");
+    createBackupQueue.subscribe({
+      handler: "functions/create-backup-worker/index.handler",
     });
   },
 });

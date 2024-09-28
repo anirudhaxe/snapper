@@ -13,5 +13,9 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
+    "createBackupQueue": {
+      "type": "sst.aws.Queue"
+      "url": string
+    }
   }
 }
