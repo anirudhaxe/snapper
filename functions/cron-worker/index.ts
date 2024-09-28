@@ -5,16 +5,20 @@ import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
 
 const client = new SQSClient();
 
-export const handler: Handler = async () => {
+export const handler: Handler = async (_, context) => {
   const input = variableProvider();
 
-  // send a message
-  await client.send(
-    new SendMessageCommand({
-      QueueUrl: Resource.createBackupQueue.url,
-      MessageBody: JSON.stringify(input),
-    }),
-  );
+  console.log("REQUEST_ID: ", context.awsRequestId);
+
+  input.connectionData.map(async (connectionData) => {
+    // send a message
+    await client.send(
+      new SendMessageCommand({
+        QueueUrl: Resource.createBackupQueue.url,
+        MessageBody: JSON.stringify(connectionData),
+      }),
+    );
+  });
 
   return {
     statusCode: 200,
