@@ -16,6 +16,7 @@ export default $config({
     const connStringsEnv = new sst.Secret("DATABASE_CONN_STRINGS");
     const backupStorageDataEnv = new sst.Secret("BACKUP_STORAGE_DATA");
 
+    const backupBucket = new sst.aws.Bucket("snapperDbBackupBucket");
     // TODO: setup a dead letter queue
     const createBackupQueue = new sst.aws.Queue("createBackupQueue");
 
@@ -28,11 +29,11 @@ export default $config({
       },
     });
 
-    // createBackupQueue.subscribe("functions/create-backup-worker/index.handler");
     createBackupQueue.subscribe(
       {
         handler: "functions/create-backup-worker/index.handler",
         timeout: "5 minutes",
+        link: [backupBucket],
       },
       { batch: { size: 1 } },
     );
