@@ -17,10 +17,11 @@ export default $config({
     const backupStorageDataEnv = new sst.Secret("BACKUP_STORAGE_DATA");
 
     const backupBucket = new sst.aws.Bucket("snapperDbBackupBucket");
-    // TODO: setup a dead letter queue
+    // TODO: setup a dead letter queue and check lambda error state
     const createBackupQueue = new sst.aws.Queue("createBackupQueue");
 
     new sst.aws.Cron("cron-worker", {
+      // TODO: make this once a day
       schedule: "rate(1 minute)",
       job: {
         handler: "functions/cron-worker/index.handler",

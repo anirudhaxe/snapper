@@ -6,6 +6,7 @@ type connectionData = {
 };
 type DbType = "POSTGRES" | "MONGO" | "MYSQL";
 
+// TODO: count last 7 backups
 // BACKUP_STORAGE_DATA = key1db,2|key2db,4|key3db,3
 type backupStorageData = {
   dbKey: string; // unique db identifier
