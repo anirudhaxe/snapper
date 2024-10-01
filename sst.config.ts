@@ -32,8 +32,19 @@ export default $config({
     createBackupQueue.subscribe(
       {
         handler: "functions/create-backup-worker/index.handler",
-        timeout: "5 minutes",
+        // TODO: figure out this timeout
+        // timeout: "5 minutes",
         link: [backupBucket],
+        copyFiles: [
+          {
+            from: "bin/postgres-16.3/libpq.so.5",
+            to: "functions/create-backup-worker/bin/postgres-16.3/libpq.so.5",
+          },
+          {
+            from: "bin/postgres-16.3/pg_dump",
+            to: "functions/create-backup-worker/bin/postgres-16.3/pg_dump",
+          },
+        ],
       },
       { batch: { size: 1 } },
     );
