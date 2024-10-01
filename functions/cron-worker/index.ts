@@ -10,15 +10,17 @@ export const handler: Handler = async (_, context) => {
 
   console.log("REQUEST_ID: ", context.awsRequestId);
 
-  input.connectionData.map(async (connectionData) => {
+  const promiseArr = input.connectionData.map((connectionData) => {
     // send a message
-    await client.send(
+    return client.send(
       new SendMessageCommand({
         QueueUrl: Resource.createBackupQueue.url,
         MessageBody: JSON.stringify(connectionData),
       }),
     );
   });
+
+  await Promise.all(promiseArr);
 
   return {
     statusCode: 200,

@@ -20,8 +20,9 @@ export const variableProvider: variableProvider = () => {
       const arr = connectionData.split(",");
 
       return {
-        dbConnString: arr[0],
-        dbType: arr[1] as DbType,
+        dbkey: arr[0],
+        dbConnString: arr[1],
+        dbType: arr[2] as DbType,
       };
     }),
 
@@ -29,7 +30,7 @@ export const variableProvider: variableProvider = () => {
       const arr = bucketData.split(",");
 
       return {
-        backupDirKey: arr[0],
+        dbKey: arr[0],
         retentionPeriod: Number(arr[1]),
       };
     }),

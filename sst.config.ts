@@ -16,6 +16,7 @@ export default $config({
     const connStringsEnv = new sst.Secret("DATABASE_CONN_STRINGS");
     const backupStorageDataEnv = new sst.Secret("BACKUP_STORAGE_DATA");
 
+    const backupBucket = new sst.aws.Bucket("snapperDbBackupBucket");
     // TODO: setup a dead letter queue
     const createBackupQueue = new sst.aws.Queue("createBackupQueue");
 
@@ -28,11 +29,22 @@ export default $config({
       },
     });
 
-    // createBackupQueue.subscribe("functions/create-backup-worker/index.handler");
     createBackupQueue.subscribe(
       {
         handler: "functions/create-backup-worker/index.handler",
-        timeout: "5 minutes",
+        // TODO: figure out this timeout
+        // timeout: "5 minutes",
+        link: [backupBucket],
+        copyFiles: [
+          {
+            from: "bin/postgres-16.3/libpq.so.5",
+            to: "functions/create-backup-worker/bin/postgres-16.3/libpq.so.5",
+          },
+          {
+            from: "bin/postgres-16.3/pg_dump",
+            to: "functions/create-backup-worker/bin/postgres-16.3/pg_dump",
+          },
+        ],
       },
       { batch: { size: 1 } },
     );
