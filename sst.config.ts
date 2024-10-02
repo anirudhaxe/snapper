@@ -27,7 +27,12 @@ export default $config({
       job: {
         handler: "functions/cron-worker/index.handler",
         timeout: "5 minutes",
-        link: [connStringsEnv, backupStorageDataEnv, createBackupQueue],
+        link: [
+          connStringsEnv,
+          backupStorageDataEnv,
+          createBackupQueue,
+          deleteBackupQueue,
+        ],
       },
     });
 

@@ -31,10 +31,7 @@ export const handler: Handler = async (event, context) => {
 
       const numberOfExtraBackups =
         bucketObjects.Contents.length - Number(message.retentionPeriod);
-      const extraObjects = sortedObjectsArray.slice(
-        0,
-        numberOfExtraBackups - 1,
-      );
+      const extraObjects = sortedObjectsArray.slice(0, numberOfExtraBackups);
 
       const deletePromises = extraObjects.map((object) => {
         return deleteS3Object({
