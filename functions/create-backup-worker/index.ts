@@ -3,7 +3,7 @@ import { connectionData } from "~/types/globals";
 import extractPgConfig from "~/utils/pgConfigExtractor";
 import config from "./config";
 import pgdump from "./pgdump";
-import uploadToS3 from "./s3";
+import { uploadS3Object } from "~/utils/s3";
 import { Resource } from "sst";
 
 export const handler: Handler = async (event, context) => {
@@ -14,20 +14,37 @@ export const handler: Handler = async (event, context) => {
     if (!message) {
       return;
     }
-    console.log("MESSAGE:", message, "REQUEST_ID: ", context.awsRequestId);
 
     const dbConfig = extractPgConfig(message.dbConnString);
 
     const { fileName, filePath } = await pgdump({ ...config, ...dbConfig });
 
-    await uploadToS3({
+    await uploadS3Object({
       bucket: Resource.snapperDbBackupBucket.name,
       key: `${message.dbkey}/${fileName}`,
       filePath: filePath,
     });
 
-    return "ok";
+    return {
+      statusCode: 200,
+      body: JSON.stringify(
+        { message: `backup created ${message.dbkey}/${fileName}` },
+        null,
+        2,
+      ),
+    };
   } catch (error) {
-    console.error("Caught error:", error);
+    console.error(`caught error in REQUEST_ID: ${context.awsRequestId}`, error);
+
+    return {
+      statusCode: 500,
+      body: JSON.stringify(
+        {
+          message: "an unexpected error occurred",
+        },
+        null,
+        2,
+      ),
+    };
   }
 };
