@@ -19,6 +19,7 @@ export default $config({
     const backupBucket = new sst.aws.Bucket("snapperDbBackupBucket");
     // TODO: setup a dead letter queue and check lambda error state
     const createBackupQueue = new sst.aws.Queue("createBackupQueue");
+    const deleteBackupQueue = new sst.aws.Queue("deleteBackupQueue");
 
     new sst.aws.Cron("cron-worker", {
       // TODO: make this once a day
@@ -46,6 +47,16 @@ export default $config({
             to: "functions/create-backup-worker/bin/postgres-16.3/pg_dump",
           },
         ],
+      },
+      { batch: { size: 1 } },
+    );
+
+    deleteBackupQueue.subscribe(
+      {
+        handler: "functions/delete-backup-worker/index.handler",
+        // TODO: figure out this timeout
+        // timeout: "5 minutes",
+        link: [backupBucket],
       },
       { batch: { size: 1 } },
     );
