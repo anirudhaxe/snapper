@@ -17,6 +17,10 @@ declare module "sst" {
       "type": "sst.aws.Queue"
       "url": string
     }
+    "deleteBackupQueue": {
+      "type": "sst.aws.Queue"
+      "url": string
+    }
     "snapperDbBackupBucket": {
       "name": string
       "type": "sst.aws.Bucket"
