@@ -7,6 +7,8 @@ export const handler: Handler = async (event, context) => {
   try {
     const message = JSON.parse(event.Records[0].body) as backupStorageData;
 
+    console.log(`delete backup request for db Key- ${message.dbKey}`);
+
     // TODO: handle this error
     if (!message) {
       return;
@@ -16,6 +18,11 @@ export const handler: Handler = async (event, context) => {
       bucket: Resource.snapperDbBackupBucket.name,
       prefix: `${message.dbKey}/`,
     });
+
+    console.log(
+      `for db Key- ${message.dbKey} found bucket objects: `,
+      bucketObjects.Contents,
+    );
 
     if (
       bucketObjects.Contents &&
@@ -40,7 +47,19 @@ export const handler: Handler = async (event, context) => {
         });
       });
 
+      console.log(
+        `for DB key- ${message.dbKey}: `,
+        "allowed backups: ",
+        `${Number(message.retentionPeriod)} `,
+        "found backups: ",
+        `${bucketObjects.Contents.length}`,
+      );
+
+      console.log("trying to delete backups: ", extraObjects);
+
       await Promise.all(deletePromises);
+
+      console.log("successfully deleted backups: ", extraObjects);
 
       return {
         statusCode: 200,
@@ -51,6 +70,15 @@ export const handler: Handler = async (event, context) => {
         ),
       };
     } else {
+      console.log(
+        `for DB key- ${message.dbKey}: `,
+        "allowed backups: ",
+        `${Number(message.retentionPeriod)} `,
+        "found backups: ",
+        `${bucketObjects.Contents?.length} `,
+        "thus found no backups that needs to be deleted",
+      );
+
       return {
         statusCode: 200,
         body: JSON.stringify(

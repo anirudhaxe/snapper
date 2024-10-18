@@ -32,7 +32,7 @@ async function listS3Objects(props: {
 }): Promise<ListObjectsV2CommandOutput> {
   const params = {
     Bucket: props.bucket,
-    prefix: props.prefix,
+    Prefix: props.prefix,
   };
 
   return s3Client.send(new ListObjectsV2Command(params));
