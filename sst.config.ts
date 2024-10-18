@@ -22,8 +22,8 @@ export default $config({
     const deleteBackupQueue = new sst.aws.Queue("deleteBackupQueue");
 
     new sst.aws.Cron("cron-worker", {
-      // TODO: make this once a day
-      schedule: "rate(1 minute)",
+      // schedule: "rate(1 minute)",
+      schedule: "rate(1 day)",
       job: {
         handler: "functions/cron-worker/index.handler",
         timeout: "5 minutes",
