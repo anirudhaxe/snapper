@@ -10,6 +10,8 @@ export const handler: Handler = async (event, context) => {
   try {
     const message = JSON.parse(event.Records[0].body) as connectionData;
 
+    console.log(`create backup request for db Key- ${message.dbkey}`);
+
     // TODO: handle this error
     if (!message) {
       return;
@@ -24,6 +26,11 @@ export const handler: Handler = async (event, context) => {
       key: `${message.dbkey}/${fileName}`,
       filePath: filePath,
     });
+
+    console.log(
+      `for DB key- ${message.dbkey} successfully created backup: `,
+      `${message.dbkey}/${fileName}`,
+    );
 
     return {
       statusCode: 200,
