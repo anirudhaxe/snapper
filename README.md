@@ -6,11 +6,11 @@ It uses [SST](https://sst.dev/) (a framework based on [Pulumi](https://www.pulum
 
 `Currently only PostgreSQL databases are supported.`
 
-## Installation
+## 📦 Installation
 
 For information regarding setting up aws cresentials for using sst refer to [sst docs](https://sst.dev/docs/aws-accounts).
 
-Note that for easy setup, just create a IAM user with 'AdministratorAccess' policy, then configure the aws cli with the access keys of this user.
+Note that for easy setup, just create an IAM user with 'AdministratorAccess' policy, then configure the aws cli with the access keys of this user.
 
 - ### Clone and install dependencies:
 
@@ -38,13 +38,13 @@ pnpm sst secret set BACKUP_STORAGE_DATA "FOO-DATABASE,7|BAR-DATABASE,4|FEE-DATAB
 pnpm sst deploy --stage prod
 ```
 
-## Architecture
+## 🏗️ Architecture
 
 Snapper uses a cron job, queues, along with serverless functions and object storage for reliablility and scalability.
 
 ![Architecture](./assets/architecture.png)
 
-## TODOs:
+## 🪓 TODOs:
 
 - Implement streaming chuks of backup file data to S3 bucket, to avoid loading whole file in function memory.
 - Implement an optional encryption feature to encrypt the backup data.
@@ -55,6 +55,6 @@ Snapper uses a cron job, queues, along with serverless functions and object stor
 
 ---
 
-### Credits
+### 🎉 Credits
 
 - [pgdump-aws-lambda](https://github.com/jameshy/pgdump-aws-lambda) - for migrating pg_dump binary to lambda, other ideas and code inspirations.
