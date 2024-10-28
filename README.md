@@ -9,6 +9,7 @@ It uses [SST](https://sst.dev/) (a framework based on [Pulumi](https://www.pulum
 ## Installation
 
 For information regarding setting up aws cresentials for using sst refer to [sst docs](https://sst.dev/docs/aws-accounts).
+
 Note that for easy setup, just create a IAM user with 'AdministratorAccess' policy, then configure the aws cli with the access keys of this user.
 
 - ### Clone and install dependencies:
@@ -21,20 +22,19 @@ pnpm i
 
 - ### Set secrets:
 
-We add all the sensitive connection information in a secret, this data is encryted and stored in your aws environment.
-
 ```bash
-# refer to .env.example file for more information.
-# setting these secrets to stage 'prod'.
+# refer to .env.example file for more information
+# this sensitive data is encryted and stored in your aws environment
+# setting these secrets to stage 'prod'
 pnpm sst secret set DATABASE_CONN_STRINGS "FOO-DATABASE,postgresql://..,POSTGRES|BAR-DATABASE,postgresql://..,POSTGRES|FEE-DATABASE,postgresql://..,POSTGRES" --stage prod
 pnpm sst secret set BACKUP_STORAGE_DATA "FOO-DATABASE,7|BAR-DATABASE,4|FEE-DATABASE,5" --stage prod
+
 ```
 
 - ### Deploy:
 
-Deploying to stage 'prod'.
-
 ```bash
+# deploying to stage 'prod'
 pnpm sst deploy --stage prod
 ```
 
