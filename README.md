@@ -6,6 +6,12 @@ It uses [SST](https://sst.dev/) (a framework based on [Pulumi](https://www.pulum
 
 `Currently only PostgreSQL databases are supported.`
 
+## 🏗️ Architecture
+
+Snapper uses a cron job, queues, along with serverless functions and object storage for reliablility and scalability.
+
+![Architecture](./assets/architecture.png)
+
 ## 📦 Installation
 
 For information regarding setting up aws cresentials for using sst refer to [sst docs](https://sst.dev/docs/aws-accounts).
@@ -37,12 +43,6 @@ pnpm sst secret set BACKUP_STORAGE_DATA "FOO-DATABASE,7|BAR-DATABASE,4|FEE-DATAB
 # deploying to stage 'prod'
 pnpm sst deploy --stage prod
 ```
-
-## 🏗️ Architecture
-
-Snapper uses a cron job, queues, along with serverless functions and object storage for reliablility and scalability.
-
-![Architecture](./assets/architecture.png)
 
 ## 🪓 TODOs:
 
